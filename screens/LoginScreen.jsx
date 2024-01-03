@@ -1,8 +1,22 @@
 import { Image, Pressable, StyleSheet, Text, TextInput, TouchableHighlight, TouchableOpacity, View } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
 
 const LoginScreen = () => {
+
+
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  const navigation = useNavigation()
+
+  const handleLogin = () => {
+    console.log(email,": ", password)
+    navigation.navigate("Home")
+  }
+
+
   return (
     <SafeAreaView style={{backgroundColor:"#EEF3F6"}}>
       <View style={{ marginTop:30, justifyContent:"center", alignItems:"center"}}>
@@ -14,14 +28,14 @@ const LoginScreen = () => {
         <Text style={{marginTop:10, fontFamily: 'Inter_400Regular', fontSize:15, color:"gray"}}>Please login to access your account</Text>
       </View>
 
-      <TextInput style={{marginTop:70, marginLeft:20, marginRight:20, height: 50, borderColor: '#3834E7', borderWidth: 2, borderRadius:10, paddingLeft:20, fontFamily: 'Inter_400Regular', fontSize:15, color:"gray"}} placeholder="Email Address" />
-      <TextInput style={{marginTop:40, marginLeft:20, marginRight:20, height: 50, borderColor: '#3834E7', borderWidth: 2, borderRadius:10, paddingLeft:20, fontFamily: 'Inter_400Regular', fontSize:15, color:"gray"}} placeholder="Enter Password" />
+      <TextInput value={email} onChangeText={(text) => setEmail(text)} style={{marginTop:70, marginLeft:20, marginRight:20, height: 50, borderColor: '#3834E7', borderWidth: 2, borderRadius:10, paddingLeft:20, fontFamily: 'Inter_400Regular', fontSize:15, color:"gray"}} placeholder="Email Address" />
+      <TextInput value={password} onChangeText={(text) => setPassword(text)} secureTextEntry={true} style={{marginTop:40, marginLeft:20, marginRight:20, height: 50, borderColor: '#3834E7', borderWidth: 2, borderRadius:10, paddingLeft:20, fontFamily: 'Inter_400Regular', fontSize:15, color:"gray"}} placeholder="Enter Password" />
 
       <View style={{marginTop:20, alignItems:"flex-end"}}>
         <Text style={{marginRight:20, fontFamily: 'Inter_400Regular', fontSize:13, color:"gray"}}>Forgot Password?</Text>
       </View>
 
-      <TouchableOpacity style={{marginTop:30, marginLeft:20, marginRight:20, height: 50, backgroundColor:"#3834E7", borderRadius:10, justifyContent:"center", alignItems:"center"}}>
+      <TouchableOpacity onPress={() => handleLogin()} style={{marginTop:30, marginLeft:20, marginRight:20, height: 50, backgroundColor:"#3834E7", borderRadius:10, justifyContent:"center", alignItems:"center"}}>
         <Text style={{fontFamily: 'Inter_400Regular', fontSize:15, color:"white", fontWeight:"bold"}}>Login</Text>
       </TouchableOpacity>
 
