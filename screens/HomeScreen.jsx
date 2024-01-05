@@ -2,6 +2,8 @@ import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-nativ
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { EvilIcons, Feather } from '@expo/vector-icons';
+import Slider from '../component/Slider';
+
 
 const HomeScreen = () => {
 
@@ -30,6 +32,10 @@ const HomeScreen = () => {
           <Text style={{fontFamily: 'Inter_400Regular', fontSize:15, color:selectedType === "Apartment" ? "white" : "black", fontWeight:"bold"}}>Apartment</Text>
         </TouchableOpacity>
       </View>
+
+      <Slider />
+
+      
 
       
 
