@@ -22,7 +22,7 @@ export default [
   },
   {
     id: 4,
-    img: require('../assets/Screen1.png'),
+    img: require('../assets/Screen1.jpeg'),
     title: 'Charger',
     description: "It's not magic, it's just science",
     price: '$49',
