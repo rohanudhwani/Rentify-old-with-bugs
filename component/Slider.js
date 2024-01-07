@@ -1,7 +1,9 @@
-import {Animated, FlatList, StyleSheet, Text, View} from 'react-native';
+import {Animated, Dimensions, FlatList, StyleSheet, Text, View} from 'react-native';
 import React, {useRef, useState} from 'react';
 import Slides from './index';
 import SlideItem from './SlideItem';
+
+const {width, height} = Dimensions.get('screen');
 
 const Slider = () => {
   const [index, setIndex] = useState(0);
@@ -33,8 +35,9 @@ const Slider = () => {
     itemVisiblePercentThreshold: 50,
   }).current;
 
+  const modWidth = width - 40;
+
   return (
-    <View>
       <FlatList
         data={Slides}
         renderItem={({item}) => <SlideItem item={item} />}
@@ -45,8 +48,8 @@ const Slider = () => {
         onScroll={handleOnScroll}
         onViewableItemsChanged={handleOnViewableItemsChanged}
         viewabilityConfig={viewabilityConfig}
+        style={{}}
       />
-    </View>
   );
 };
 

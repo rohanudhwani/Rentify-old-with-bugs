@@ -8,14 +8,14 @@ export default [
   },
   {
     id: 2,
-    img: require('../assets/Screen1.jpeg'),
+    img: require('../assets/Screen2.jpg'),
     title: 'AirPods Pro',
     description: 'Active noise cancellation for immersive sound',
     price: '$249',
   },
   {
     id: 3,
-    img: require('../assets/Screen1.jpeg'),
+    img: require('../assets/Screen3.jpg'),
     title: 'AirPods Max',
     description: 'Effortless AirPods experience',
     price: '$549',

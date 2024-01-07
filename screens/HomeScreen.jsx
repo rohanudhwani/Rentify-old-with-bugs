@@ -1,13 +1,41 @@
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { EvilIcons, Feather } from '@expo/vector-icons';
 import Slider from '../component/Slider';
+import Properties from '../component/Properties';
 
 
 const HomeScreen = () => {
 
   const [selectedType, setSelectedType] = useState("House")
+
+  const propertyData = [
+    {
+      image: require('../assets/Screen1.jpeg'),
+      name: 'Beautiful House',
+      location: 'City Center',
+      priceRange: '5,00,000 - 6,00,000',
+    },
+    {
+      image: require('../assets/Screen2.jpg'),
+      name: 'Bell Cottage',
+      location: 'Lodha Paradise Thane',
+      priceRange: '5,00,000 - 6,00,000',
+    },
+    {
+      image: require('../assets/Screen3.jpg'),
+      name: 'Fairy View House',
+      location: 'Elecronic City Bangalore',
+      priceRange: '5,00,000 - 6,00,000',
+    },
+    {
+      image: require('../assets/Screen1.jpeg'),
+      name: 'Beautiful fdfdfeHouse',
+      location: 'City Center',
+      priceRange: '5,00,000 - 6,00,000',
+    },
+  ];
 
   return (
     <SafeAreaView style={{ backgroundColor: "#EEF3F6" }}>
@@ -33,9 +61,20 @@ const HomeScreen = () => {
         </TouchableOpacity>
       </View>
 
-      <Slider />
+      <ScrollView showsVerticalScrollIndicator={false} style={{marginTop: 20, marginLeft: 20, marginRight: 20, marginBottom:160}}>
 
-      
+        <Slider />
+
+        <View style={{flexDirection:"row", marginTop:10, justifyContent:"space-between", marginRight:20, alignItems:"baseline", marginBottom:8}}>
+          <Text style={{fontFamily: 'Inter_400Regular', fontSize:18, fontWeight:"bold"}}>Properties for you</Text>
+          <Text style={{fontFamily: 'Inter_400Regular', fontSize:13, fontWeight:"bold", color:"#5552E9"}}>See all</Text>
+        </View>
+
+        {propertyData.map((property, index) => (
+          <Properties key={index} property={property} />
+        ))}
+
+      </ScrollView>
 
       
 

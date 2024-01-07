@@ -1,41 +1,22 @@
 import {
   Image,
-  StyleSheet,
-  Text,
   View,
   Dimensions,
-  Animated,
-  Easing,
+  Text,
 } from 'react-native';
 import React from 'react';
 
 const {width, height} = Dimensions.get('screen');
 
 const SlideItem = ({item}) => {
-  const translateYImage = new Animated.Value(40);
-
-  Animated.timing(translateYImage, {
-    toValue: 0,
-    duration: 1000,
-    useNativeDriver: true,
-    easing: Easing.bounce,
-  }).start();
+  const modWidth = width - 40;
 
   return (
-    <View style={styles.container}>
-      <Animated.Image
+    <View style={{width:modWidth, height:300, alignItems: 'center', overflow: 'hidden', borderRadius:30, }}>
+      <Image
         source={item.img}
-        resizeMode="contain"
-        style={[
-          styles.image,
-          {
-            transform: [
-              {
-                translateY: translateYImage,
-              },
-            ],
-          },
-        ]}
+        resizeMode="cover"
+        style={{width: '100%', height: '100%' }}
       />
     </View>
   );
@@ -43,14 +24,5 @@ const SlideItem = ({item}) => {
 
 export default SlideItem;
 
-const styles = StyleSheet.create({
-  container: {
-    width,
-    height,
-    alignItems: 'center',
-  },
-  image: {
-    flex: 0.6,
-    width: '100%',
-  },
-});
+
+
