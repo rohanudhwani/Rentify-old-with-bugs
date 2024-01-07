@@ -13,7 +13,7 @@ const LoginScreen = () => {
 
   const handleLogin = () => {
     console.log(email,": ", password)
-    navigation.navigate("Home")
+    navigation.navigate("OnBoarding")
   }
 
 
