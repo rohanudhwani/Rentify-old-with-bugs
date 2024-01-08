@@ -7,6 +7,8 @@ const FilterScreen = () => {
 
 
   const [selectedType, setSelectedType] = useState("Family house")
+  const [selectedBedroomType, setSelectedBedroomType] = useState("Option 3")
+  const [selectedWashroomType, setSelectedWashroomType] = useState("Option 2")
 
   const [priceValues, setPriceValues] = useState([10, 50])
   const [distanceValues, setDistanceValues] = useState([0, 5])
@@ -40,7 +42,7 @@ const FilterScreen = () => {
       <View style={{ padding: 20, justifyContent: "center" }}>
         <MultiSlider
           values={[priceValues[0], priceValues[1]]}
-          sliderLength={280}
+          sliderLength={300}
           onValuesChange={multiSliderPriceValuesChange}
           min={10}
           max={100}
@@ -61,7 +63,7 @@ const FilterScreen = () => {
       <View style={{ padding: 20, justifyContent: "center" }}>
         <MultiSlider
           values={[distanceValues[0], distanceValues[1]]}
-          sliderLength={280}
+          sliderLength={300}
           onValuesChange={multiSliderDistanceValuesChange}
           min={0}
           max={10}
@@ -78,16 +80,15 @@ const FilterScreen = () => {
       </View>
 
       <Text style={{ marginTop: 10, fontSize: 20, fontWeight: "700", fontFamily: "Inter_400Regular" }}>Bed room</Text>
-
       <View style={{ marginTop: 20, alignItems: 'center', justifyContent: "center", flexDirection: 'row', gap: 8 }}>
         {[1, 2, 3, 4, 5].map((option) => (
           <TouchableOpacity
             key={option}
-            onPress={() => setSelectedType(`Option ${option}`)}
+            onPress={() => setSelectedBedroomType(`Option ${option}`)}
             style={{
               width: 60,
               height: 60,
-              backgroundColor: selectedType === `Option ${option}` ? "#3834E7" : "white",
+              backgroundColor: selectedBedroomType === `Option ${option}` ? "#3834E7" : "white",
               borderRadius: 100,
               justifyContent: "center",
               alignItems: "center",
@@ -98,11 +99,41 @@ const FilterScreen = () => {
             <Text style={{
               fontFamily: 'Inter_400Regular',
               fontSize: 15,
-              color: selectedType === `Option ${option}` ? "white" : "black"
+              color: selectedBedroomType === `Option ${option}` ? "white" : "black"
             }}>{option}</Text>
           </TouchableOpacity>
         ))}
       </View>
+
+      <Text style={{ marginTop: 20, fontSize: 20, fontWeight: "700", fontFamily: "Inter_400Regular" }}>Washroom</Text>
+      <View style={{ marginTop: 20, alignItems: 'center', justifyContent: "center", flexDirection: 'row', gap: 8 }}>
+        {[1, 2, 3, 4, 5].map((option) => (
+          <TouchableOpacity
+            key={option}
+            onPress={() => setSelectedWashroomType(`Option ${option}`)}
+            style={{
+              width: 60,
+              height: 60,
+              backgroundColor: selectedWashroomType === `Option ${option}` ? "#3834E7" : "white",
+              borderRadius: 100,
+              justifyContent: "center",
+              alignItems: "center",
+              borderColor: "#3834E7",
+              borderWidth: 2
+            }}
+          >
+            <Text style={{
+              fontFamily: 'Inter_400Regular',
+              fontSize: 15,
+              color: selectedWashroomType === `Option ${option}` ? "white" : "black"
+            }}>{option}</Text>
+          </TouchableOpacity>
+        ))}
+      </View>
+
+      <TouchableOpacity style={{ marginTop: 30, width: '100%', height: 50, backgroundColor: "#3834E7", borderRadius: 10, justifyContent: "center", alignItems: "center" }}>
+        <Text style={{ fontFamily: 'Inter_400Regular', fontSize: 15, color: "white" }}>Apply Filter</Text>
+      </TouchableOpacity>
 
     </SafeAreaView>
   )
