@@ -39,15 +39,15 @@ export default function App() {
     <NavigationContainer>
       <MyComponent setActiveScreen={setActiveScreen} />
       <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Screen name="Filter" component={FilterScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="OnBoarding" component={OnBoardingScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Filter" component={FilterScreen} />
       </Stack.Navigator>
 
 
 
-      {activeScreen !== "Login" && activeScreen !== "OnBoarding" && (
+      {activeScreen !== "Login" && activeScreen !== "OnBoarding" && activeScreen !== "Filter" && (
         <BottomTab activeScreen={activeScreen}/>
       ) }
     </NavigationContainer>
