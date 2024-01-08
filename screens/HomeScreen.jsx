@@ -35,6 +35,12 @@ const HomeScreen = () => {
       location: 'City Center',
       priceRange: '5,00,000 - 6,00,000',
     },
+    {
+      image: require('../assets/Screen3.jpg'),
+      name: 'Fairy Viefddddw House',
+      location: 'Elecronic City Bangalore',
+      priceRange: '5,00,000 - 6,00,000',
+    },
   ];
 
   return (
@@ -61,7 +67,7 @@ const HomeScreen = () => {
         </TouchableOpacity>
       </View>
 
-      <ScrollView showsVerticalScrollIndicator={false} style={{ marginTop: 20, marginLeft: 20, marginRight: 20, marginBottom: 160 }}>
+      <ScrollView showsVerticalScrollIndicator={false} style={{ marginTop: 20, marginLeft: 20, marginRight: 20, marginBottom: 220 }}>
 
         <Slider />
 

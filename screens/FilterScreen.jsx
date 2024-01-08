@@ -2,9 +2,10 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
+import { useNavigation } from '@react-navigation/native';
 
 const FilterScreen = () => {
-
+  const navigation = useNavigation()
 
   const [selectedType, setSelectedType] = useState("Family house")
   const [selectedBedroomType, setSelectedBedroomType] = useState("Option 3")
@@ -131,7 +132,7 @@ const FilterScreen = () => {
         ))}
       </View>
 
-      <TouchableOpacity style={{ marginTop: 30, width: '100%', height: 50, backgroundColor: "#3834E7", borderRadius: 10, justifyContent: "center", alignItems: "center" }}>
+      <TouchableOpacity onPress={() => navigation.goBack()} style={{ marginTop: 30, width: '100%', height: 50, backgroundColor: "#3834E7", borderRadius: 10, justifyContent: "center", alignItems: "center" }}>
         <Text style={{ fontFamily: 'Inter_400Regular', fontSize: 15, color: "white" }}>Apply Filter</Text>
       </TouchableOpacity>
 
