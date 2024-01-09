@@ -56,4 +56,3 @@ export default LocationScreen
 const styles = StyleSheet.create({})
 
 
-// AIzaSyD0ou8C1M_QCrZj3m1YFE7LSVrDrZln9hY
