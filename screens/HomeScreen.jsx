@@ -4,11 +4,14 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { EvilIcons, Feather } from '@expo/vector-icons';
 import Slider from '../component/Slider';
 import Properties from '../component/Properties';
+import { useNavigation } from '@react-navigation/native';
 
 
 const HomeScreen = () => {
 
   const [selectedType, setSelectedType] = useState("House")
+
+  const navigation = useNavigation()
 
   const propertyData = [
     {

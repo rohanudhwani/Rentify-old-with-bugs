@@ -2,8 +2,13 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Entypo, EvilIcons, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 const DetailScreen = () => {
+
+    const navigation = useNavigation()
+
+
     return (
         <View>
             <Image style={{ width: '100%', height: 240 }} source={require('../assets/Screen1.jpeg')} resizeMode='cover' />
@@ -11,7 +16,10 @@ const DetailScreen = () => {
             <View style={{ marginRight: 20, marginLeft: 20, marginTop: 15 }}>
                 <View style={{ alignItems: 'baseline', justifyContent: "space-between", flexDirection: "row" }}>
                     <Text style={{ fontFamily: 'Inter_400Regular', fontSize: 18, fontWeight: "700" }}>Fairy view House</Text>
-                    <Entypo name="eye" size={24} color="#5552E9" />
+                    <View style={{flexDirection:"row", gap:15}}>
+                        <Entypo name="location" size={24} color="#5552E9" onPress={() => navigation.navigate("Location")}  />
+                        <Entypo name="eye" size={24} color="#5552E9"/>
+                    </View>
                 </View>
                 <View style={{ flexDirection: "row", marginTop: 10 }}>
                     <EvilIcons name="location" size={28} color="black" />
@@ -70,7 +78,7 @@ const DetailScreen = () => {
                 </View>
 
                 <TouchableOpacity onPress={() => navigation.goBack()} style={{ marginTop: 30, width: '100%', height: 50, backgroundColor: "#3834E7", borderRadius: 10, justifyContent: "center", alignItems: "center" }}>
-                    <Text style={{ fontFamily: 'Inter_400Regular', fontSize: 17, color: "white", fontWeight:"bold" }}>Rent Now</Text>
+                    <Text style={{ fontFamily: 'Inter_400Regular', fontSize: 17, color: "white", fontWeight: "bold" }}>Rent Now</Text>
                 </TouchableOpacity>
             </View>
 
