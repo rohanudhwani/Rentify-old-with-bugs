@@ -22,10 +22,10 @@
                 "Swimming Pool"
             ],
             "owner": {
-                "profileImage": "ownerUrl1",
+                "profileImage": "https://firebasestorage.googleapis.com/v0/b/rentify-76d2b.appspot.com/o/properties%2Fimage_2024-01-10_192532095.png?alt=media&token=4279e6cf-cb76-4d4c-8c4c-44b79c3dee73",
                 "name": "Rishi Raj",
                 "city": "Bangalore",
-                "contactNumber": 1234567890
+                "contactNumber": 9324088967
             },
             "houseType": "Flat",
             "bedroomCount": 3,
@@ -88,7 +88,7 @@
                 "Badminton court"
             ],
             "owner": {
-                "profileImage": "ownerUrl2",
+                "profileImage": "https://firebasestorage.googleapis.com/v0/b/rentify-76d2b.appspot.com/o/properties%2Fimage_2024-01-10_192638589.png?alt=media&token=f1517978-2bda-44f8-818f-a97f96ed9777",
                 "name": "Tushit Baalaje",
                 "city": "Bangalore",
                 "contactNumber": 9876543210
@@ -119,10 +119,10 @@
                 "Lounge"
             ],
             "owner": {
-                "profileImage": "ownerUrl3",
-                "name": "Owner Name 3",
+                "profileImage": "https://firebasestorage.googleapis.com/v0/b/rentify-76d2b.appspot.com/o/properties%2Fimage_2024-01-10_192813409.png?alt=media&token=407e1071-1d6c-4223-b22d-37bd63c65104",
+                "name": "Yashika Mahajan",
                 "city": "Bangalore",
-                "contactNumber": 1234567890
+                "contactNumber": 9324088967
             },
             "houseType": "4 BHK Flat",
             "bedroomCount": 4,
@@ -149,10 +149,10 @@
                 "Lounge"
             ],
             "owner": {
-                "profileImage": "ownerUrl4",
+                "profileImage": "https://firebasestorage.googleapis.com/v0/b/rentify-76d2b.appspot.com/o/properties%2Fimage_2024-01-10_192914955.png?alt=media&token=7f75d7aa-9347-4499-8a4d-8a0817f80730",
                 "name": "Gayathri",
                 "city": "Bangalore",
-                "contactNumber": 1234567890
+                "contactNumber": 9324088967
             },
             "houseType": "3 BHK Duplex Apartment",
             "bedroomCount": 3,
@@ -209,10 +209,10 @@
                 "Indoor Squash & Badminton Courts"
             ],
             "owner": {
-                "profileImage": "ownerUrl5",
-                "name": "Owner Name 5",
+                "profileImage": "https://firebasestorage.googleapis.com/v0/b/rentify-76d2b.appspot.com/o/properties%2Fimage_2024-01-10_193244451.png?alt=media&token=07d4d2c9-4d7c-4e29-b586-e67a05e0e3b4",
+                "name": "Rohan Udhwani",
                 "city": "Bangalore",
-                "contactNumber": 1234567890
+                "contactNumber": 9324088967
             },
             "houseType": "3 BHK Apartment",
             "bedroomCount": 3,
@@ -246,10 +246,10 @@
                 "Kids Play Area"
             ],
             "owner": {
-                "profileImage": "ownerUrl6",
-                "name": "Owner Name 6",
+                "profileImage": "https://firebasestorage.googleapis.com/v0/b/rentify-76d2b.appspot.com/o/properties%2Fimage_2024-01-10_193313637.png?alt=media&token=9a8996fe-29eb-4ce1-ad1e-89f3d24e738c",
+                "name": "Ayush Singh",
                 "city": "Bangalore",
-                "contactNumber": 1234567890
+                "contactNumber": 9324088967
             },
             "houseType": "3 BHK Apartment",
             "bedroomCount": 3,
@@ -328,10 +328,10 @@
                 "Badminton court"
             ],
             "owner": {
-                "profileImage": "ownerUrl7",
-                "name": "Dinesh",
+                "profileImage": "https://firebasestorage.googleapis.com/v0/b/rentify-76d2b.appspot.com/o/properties%2Fimage_2024-01-10_193408217.png?alt=media&token=840c2bc8-745e-4784-99e2-3c25fa154364",
+                "name": "Kumar Rishav",
                 "city": "Mumbai",
-                "contactNumber": 1234567890
+                "contactNumber": 9324088967
             },
             "houseType": "3 BHK Apartment",
             "bedroomCount": 3,
@@ -379,10 +379,10 @@
                 "Fire Fighting Equipment"
             ],
             "owner": {
-                "profileImage": "ownerUrl8",
+                "profileImage": "https://firebasestorage.googleapis.com/v0/b/rentify-76d2b.appspot.com/o/properties%2Fimage_2024-01-10_193427297.png?alt=media&token=a8d45cf7-4092-46e9-bd72-c66b434176cb",
                 "name": "Ameet Motwani",
                 "city": "Mumbai",
-                "contactNumber": 1234567890
+                "contactNumber": 9324088967
             },
             "houseType": "3 BHK Apartment",
             "bedroomCount": 3,
@@ -418,10 +418,10 @@
                 "Piped Gas"
             ],
             "owner": {
-                "profileImage": "ownerUrl9",
-                "name": "Owner Name 9",
+                "profileImage": "https://firebasestorage.googleapis.com/v0/b/rentify-76d2b.appspot.com/o/properties%2Fimage_2024-01-10_193450768.png?alt=media&token=4355e06d-1101-4239-9db0-55d65956cd3e",
+                "name": "Harshita Talwar",
                 "city": "Mumbai",
-                "contactNumber": 1234567890
+                "contactNumber": 9324088967
             },
             "houseType": "1 BHK Apartment",
             "bedroomCount": 1,
@@ -452,16 +452,16 @@
                 "Maintenance Staff"
             ],
             "owner": {
-                "profileImage": "ownerUrl10",
+                "profileImage": "https://firebasestorage.googleapis.com/v0/b/rentify-76d2b.appspot.com/o/properties%2Fimage_2024-01-10_193724143.png?alt=media&token=043e1335-94a4-463a-aa81-91befb7e6283",
                 "name": "Saumya Sharma",
                 "city": "Nagpur",
-                "contactNumber": 1234567890
+                "contactNumber": 9324088967
             },
             "houseType": "2 BHK Apartment",
             "bedroomCount": 2,
             "washroomCount": 1
         },
-        "houseId11": {
+        "11": {
             "name": "2 BHK Apartment in Suyog Nagar",
             "price": 20000,
             "area": "Suyog Nagar, Nagpur",
@@ -486,10 +486,10 @@
                 "Maintenance Staff"
             ],
             "owner": {
-                "profileImage": "sd",
-                "name": "Swaraj Bhardwaj",
+                "profileImage": "https://lh3.googleusercontent.com/a/ACg8ocKlmfi5NPiD1oMp68TCIiB8el5byw-Lntgnyp0DSs2NZ8SC=s317-c-no",
+                "name": "Rohan Udhwani",
                 "city": "Nagpur",
-                "contactNumber": 1234567890
+                "contactNumber": 9324088967
             },
             "houseType": "2 BHK Apartment",
             "bedroomCount": 2,
@@ -520,10 +520,10 @@
                 "Maintenance Staff"
             ],
             "owner": {
-                "profileImage": "ownerUrl12",
-                "name": "Rajiv Naik",
+                "profileImage": "https://lh3.googleusercontent.com/a/ACg8ocKlmfi5NPiD1oMp68TCIiB8el5byw-Lntgnyp0DSs2NZ8SC=s317-c-no",
+                "name": "Rohan Udhwani",
                 "city": "Nagpur",
-                "contactNumber": 1234567890
+                "contactNumber": 9324088967
             },
             "houseType": "3 BHK Villa",
             "bedroomCount": 3,
