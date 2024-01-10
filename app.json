@@ -22,7 +22,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "googleServicesFile": "./google-services.json"
+      "package": "com.rohanudhwani.Rentify"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -30,6 +30,5 @@
     "plugins": [
       "@react-native-firebase/app"
     ]
-
   }
 }

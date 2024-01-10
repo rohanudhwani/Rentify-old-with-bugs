@@ -11,20 +11,24 @@ const INITIAL_REGION = {
     longitudeDelta: 26,
 }
 
-const coordinate = {latitude: 21.1458, longitude: 79.0882}
-
-const zoomedRegion = {
-    latitude: coordinate.latitude,
-    longitude: coordinate.longitude,
-    latitudeDelta: 0.02,
-    longitudeDelta: 0.02,
-  }
 
 
-const LocationScreen = () => {
+
+const LocationScreen = ({ route }) => {
+
+    const property = route.params.property;
+
+    const coordinate = { latitude: property.location.latitude, longitude: property.location.longitude }
+
+    const zoomedRegion = {
+        latitude: coordinate.latitude,
+        longitude: coordinate.longitude,
+        latitudeDelta: 0.02,
+        longitudeDelta: 0.02,
+    }
 
     const [rating, setRating] = useState(0);
-    // console.log(rating)
+
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: "#EEF3F6" }}>
@@ -32,18 +36,18 @@ const LocationScreen = () => {
                 <Marker coordinate={coordinate} />
             </MapView>
 
-            <View style={{ flex: 1, flexDirection: "row", gap: 6, marginRight: 20, marginLeft: 20, marginTop:10}}>
-                <Image source={require('../assets/Screen1.jpeg')} style={{ width: 150, height: 150, borderRadius: 20 }} />
-                <View style={{ gap:20 }}>
-                    <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Fairy view house</Text>
-                    <Text style={{ fontSize: 16, color: "gray" }}>Rs. 60K/Month</Text>
+            <View style={{ flex: 1, flexDirection: "row", gap: 9, marginRight: 20, marginLeft: 20, marginTop: 10 }}>
+                <Image source={{uri: property.mainImage}} style={{ width: 150, height: 150, borderRadius: 20 }} />
+                <View style={{ justifyContent:"space-evenly", flexDirection:"column", gap:15 }}>
+                    <Text style={{ fontSize: 18, fontWeight: 'bold', maxWidth:220 }}>{property.name}</Text>
+                    <Text style={{ fontSize: 16, color: "gray" }}>₹ {property.price}</Text>
                     <StarRating
                         rating={rating}
                         onChange={setRating}
                         color='#5552E9'
                         maxStars={4}
                         enableHalfStar={false}
-                        starSize={28} style={{marginBottom:60}}
+                        starSize={28} style={{ marginBottom: 60 }}
                     />
                 </View>
             </View>

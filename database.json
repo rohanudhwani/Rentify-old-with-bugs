@@ -27,15 +27,16 @@
                 "city": "Bangalore",
                 "contactNumber": 9324088967
             },
-            "houseType": "Flat",
+            "houseType": "Family house",
             "bedroomCount": 3,
-            "washroomCount": 2
+            "washroomCount": 2,
+            "propertyType" : "Villa"
         },
         "2": {
             "name": "Studio Apartment in Leela Residences",
             "price": 100000,
             "area": "Thanisandra Main Road, Bangalore",
-            "mainImage": "https://firebasestorage.googleapis.com/v0/b/rentify-76d2b.appspot.com/o/properties%2Fimage_2024-01-10_130009820.png?alt=media&token=2e49f842-367f-43bc-8624-465e5580dbd6",
+            "mainImage": "https://firebasestorage.googleapis.com/v0/b/rentify-76d2b.appspot.com/o/properties%2Fimage_2024-01-10_125821960.png?alt=media&token=80353ab7-0f50-4b65-98f6-c2ae23ad1e74",
             "images": {
                 "Living Room": "https://firebasestorage.googleapis.com/v0/b/rentify-76d2b.appspot.com/o/properties%2Fimage_2024-01-10_125757347.png?alt=media&token=b179d937-0450-4f56-949a-f67b03b83261",
                 "Bed Room": "https://firebasestorage.googleapis.com/v0/b/rentify-76d2b.appspot.com/o/properties%2Fimage_2024-01-10_125821960.png?alt=media&token=80353ab7-0f50-4b65-98f6-c2ae23ad1e74",
@@ -93,9 +94,10 @@
                 "city": "Bangalore",
                 "contactNumber": 9876543210
             },
-            "houseType": "Studio Apartment",
+            "houseType": "Family house",
             "bedroomCount": 0,
-            "washroomCount": 1
+            "washroomCount": 1,
+            "propertyType" : "Apartment"
         },
         "3": {
             "name": "4 BHK Flat in Sadashiva Nagar",
@@ -124,9 +126,10 @@
                 "city": "Bangalore",
                 "contactNumber": 9324088967
             },
-            "houseType": "4 BHK Flat",
+            "houseType": "Family house",
             "bedroomCount": 4,
-            "washroomCount": 4
+            "washroomCount": 4,
+            "propertyType" : "Apartment"
         },
         "4": {
             "name": "3 BHK Duplex Apartment in HM Astoria",
@@ -154,9 +157,10 @@
                 "city": "Bangalore",
                 "contactNumber": 9324088967
             },
-            "houseType": "3 BHK Duplex Apartment",
+            "houseType": "Sublet",
             "bedroomCount": 3,
-            "washroomCount": 4
+            "washroomCount": 4,
+            "propertyType" : "House"
         },
         "5": {
             "name": "3 BHK Apartment in L&T Raintree Boulevard",
@@ -214,9 +218,10 @@
                 "city": "Bangalore",
                 "contactNumber": 9324088967
             },
-            "houseType": "3 BHK Apartment",
+            "houseType": "Family house",
             "bedroomCount": 3,
-            "washroomCount": 3
+            "washroomCount": 3,
+            "propertyType" : "House"
         },
         "6": {
             "name": "3 BHK Apartment in Vaishnavi Terraces",
@@ -251,9 +256,10 @@
                 "city": "Bangalore",
                 "contactNumber": 9324088967
             },
-            "houseType": "3 BHK Apartment",
+            "houseType": "Bachelor flat",
             "bedroomCount": 3,
-            "washroomCount": 3
+            "washroomCount": 3,
+            "propertyType" : "Apartment"
         },
         "7": {
             "name": "3 BHK Apartment in Runwal Elegante",
@@ -333,9 +339,10 @@
                 "city": "Mumbai",
                 "contactNumber": 9324088967
             },
-            "houseType": "3 BHK Apartment",
+            "houseType": "Family house",
             "bedroomCount": 3,
-            "washroomCount": 3
+            "washroomCount": 3,
+            "propertyType" : "Apartment"
         },
         "8": {
             "name": "3 BHK Apartment in Lake Homes",
@@ -384,9 +391,10 @@
                 "city": "Mumbai",
                 "contactNumber": 9324088967
             },
-            "houseType": "3 BHK Apartment",
+            "houseType": "Sublet",
             "bedroomCount": 3,
-            "washroomCount": 3
+            "washroomCount": 3,
+            "propertyType" : "Villa"
         },
         "9": {
             "name": "1 BHK Apartment in Mahavir Classik",
@@ -423,9 +431,10 @@
                 "city": "Mumbai",
                 "contactNumber": 9324088967
             },
-            "houseType": "1 BHK Apartment",
+            "houseType": "Sublet",
             "bedroomCount": 1,
-            "washroomCount": 1
+            "washroomCount": 1,
+            "propertyType" : "Villa"
         },
         "10": {
             "name": "2 BHK Apartment on Medical College Road",
@@ -457,9 +466,10 @@
                 "city": "Nagpur",
                 "contactNumber": 9324088967
             },
-            "houseType": "2 BHK Apartment",
+            "houseType": "Bachelor flat",
             "bedroomCount": 2,
-            "washroomCount": 1
+            "washroomCount": 1,
+            "propertyType" : "House"
         },
         "11": {
             "name": "2 BHK Apartment in Suyog Nagar",
@@ -491,9 +501,10 @@
                 "city": "Nagpur",
                 "contactNumber": 9324088967
             },
-            "houseType": "2 BHK Apartment",
+            "houseType": "Family house",
             "bedroomCount": 2,
-            "washroomCount": 2
+            "washroomCount": 2,
+            "propertyType" : "House"
         },
         "12": {
             "name": "3 BHK Villa in Khapri",
@@ -525,9 +536,10 @@
                 "city": "Nagpur",
                 "contactNumber": 9324088967
             },
-            "houseType": "3 BHK Villa",
+            "houseType": "Bachelor flat",
             "bedroomCount": 3,
-            "washroomCount": 3
+            "washroomCount": 3,
+            "propertyType" : "Villa"
         }
     }
 }
