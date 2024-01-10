@@ -8,8 +8,8 @@ const FilterScreen = () => {
   const navigation = useNavigation()
 
   const [selectedType, setSelectedType] = useState("Family house")
-  const [selectedBedroomType, setSelectedBedroomType] = useState("Option 3")
-  const [selectedWashroomType, setSelectedWashroomType] = useState("Option 2")
+  const [selectedBedroomType, setSelectedBedroomType] = useState(3)
+  const [selectedWashroomType, setSelectedWashroomType] = useState(2)
 
   const [priceValues, setPriceValues] = useState([10, 50])
   const [distanceValues, setDistanceValues] = useState([0, 5])
@@ -19,6 +19,14 @@ const FilterScreen = () => {
   }
   multiSliderDistanceValuesChange = (values) => {
     setDistanceValues(values)
+  }
+
+  const filters = {
+    type: selectedType,
+    price: priceValues,
+    distance: distanceValues,
+    bedroom: selectedBedroomType,
+    washroom: selectedWashroomType,
   }
 
 
@@ -85,11 +93,11 @@ const FilterScreen = () => {
         {[1, 2, 3, 4, 5].map((option) => (
           <TouchableOpacity
             key={option}
-            onPress={() => setSelectedBedroomType(`Option ${option}`)}
+            onPress={() => setSelectedBedroomType(option)}
             style={{
               width: 60,
               height: 60,
-              backgroundColor: selectedBedroomType === `Option ${option}` ? "#3834E7" : "white",
+              backgroundColor: selectedBedroomType === option ? "#3834E7" : "white",
               borderRadius: 100,
               justifyContent: "center",
               alignItems: "center",
@@ -100,7 +108,7 @@ const FilterScreen = () => {
             <Text style={{
               fontFamily: 'Inter_400Regular',
               fontSize: 15,
-              color: selectedBedroomType === `Option ${option}` ? "white" : "black"
+              color: selectedBedroomType === option ? "white" : "black"
             }}>{option}</Text>
           </TouchableOpacity>
         ))}
@@ -111,11 +119,11 @@ const FilterScreen = () => {
         {[1, 2, 3, 4, 5].map((option) => (
           <TouchableOpacity
             key={option}
-            onPress={() => setSelectedWashroomType(`Option ${option}`)}
+            onPress={() => setSelectedWashroomType(option)}
             style={{
               width: 60,
               height: 60,
-              backgroundColor: selectedWashroomType === `Option ${option}` ? "#3834E7" : "white",
+              backgroundColor: selectedWashroomType === option ? "#3834E7" : "white",
               borderRadius: 100,
               justifyContent: "center",
               alignItems: "center",
@@ -126,13 +134,13 @@ const FilterScreen = () => {
             <Text style={{
               fontFamily: 'Inter_400Regular',
               fontSize: 15,
-              color: selectedWashroomType === `Option ${option}` ? "white" : "black"
+              color: selectedWashroomType === option ? "white" : "black"
             }}>{option}</Text>
           </TouchableOpacity>
         ))}
       </View>
 
-      <TouchableOpacity onPress={() => navigation.goBack()} style={{ marginTop: 30, width: '100%', height: 50, backgroundColor: "#3834E7", borderRadius: 10, justifyContent: "center", alignItems: "center" }}>
+      <TouchableOpacity onPress={() => {navigation.goBack(); navigation.navigate('PreviousScreen', { filters })}} style={{ marginTop: 30, width: '100%', height: 50, backgroundColor: "#3834E7", borderRadius: 10, justifyContent: "center", alignItems: "center" }}>
         <Text style={{ fontFamily: 'Inter_400Regular', fontSize: 15, color: "white" }}>Apply Filter</Text>
       </TouchableOpacity>
 
