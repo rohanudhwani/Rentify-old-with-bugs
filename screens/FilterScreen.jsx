@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 import { useNavigation } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
+import { updateFilters } from '../redux/actions';
 
 const FilterScreen = () => {
   const navigation = useNavigation()
@@ -21,13 +23,20 @@ const FilterScreen = () => {
     setDistanceValues(values)
   }
 
-  const filters = {
-    type: selectedType,
-    price: priceValues,
-    distance: distanceValues,
-    bedroom: selectedBedroomType,
-    washroom: selectedWashroomType,
-  }
+  const dispatch = useDispatch();
+
+  const handleApplyFilter = () => {
+    const filters = {
+      type: selectedType,
+      price: priceValues,
+      distance: distanceValues,
+      bedroom: selectedBedroomType,
+      washroom: selectedWashroomType,
+    };
+
+    dispatch(updateFilters(filters));
+    navigation.goBack();
+  };
 
 
   return (
@@ -140,7 +149,7 @@ const FilterScreen = () => {
         ))}
       </View>
 
-      <TouchableOpacity onPress={() => {navigation.goBack(); navigation.navigate('PreviousScreen', { filters })}} style={{ marginTop: 30, width: '100%', height: 50, backgroundColor: "#3834E7", borderRadius: 10, justifyContent: "center", alignItems: "center" }}>
+      <TouchableOpacity onPress={handleApplyFilter} style={{ marginTop: 30, width: '100%', height: 50, backgroundColor: "#3834E7", borderRadius: 10, justifyContent: "center", alignItems: "center" }}>
         <Text style={{ fontFamily: 'Inter_400Regular', fontSize: 15, color: "white" }}>Apply Filter</Text>
       </TouchableOpacity>
 

@@ -5,6 +5,7 @@ import { EvilIcons, Feather } from '@expo/vector-icons';
 import Slider from '../component/Slider';
 import Properties from '../component/Properties';
 import { useNavigation } from '@react-navigation/native';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 
@@ -13,6 +14,9 @@ const HomeScreen = ({ propertiesData }) => {
   const [selectedType, setSelectedType] = useState("House")
 
   const navigation = useNavigation()
+
+  const dispatch = useDispatch();
+  const filters = useSelector((state) => state.filters);
 
   const propertyData = [
     {
@@ -102,7 +106,7 @@ const HomeScreen = ({ propertiesData }) => {
 
         <View style={{ flexDirection: "row", marginTop: 10, justifyContent: "space-between", marginRight: 20, alignItems: "baseline", marginBottom: 8 }}>
           <Text style={{ fontFamily: 'Inter_400Regular', fontSize: 18, fontWeight: "bold" }}>Properties for you</Text>
-          <Text style={{ fontFamily: 'Inter_400Regular', fontSize: 13, fontWeight: "bold", color: "#5552E9" }}>See all</Text>
+          <Text onPress={() => console.log(filters)} style={{ fontFamily: 'Inter_400Regular', fontSize: 13, fontWeight: "bold", color: "#5552E9" }}>See all</Text>
         </View>
 
         {properties.map((property, index) => (
