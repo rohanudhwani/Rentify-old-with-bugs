@@ -13,8 +13,8 @@ const FilterScreen = () => {
   const [selectedBedroomType, setSelectedBedroomType] = useState(3)
   const [selectedWashroomType, setSelectedWashroomType] = useState(2)
 
-  const [priceValues, setPriceValues] = useState([10, 50])
-  const [distanceValues, setDistanceValues] = useState([0, 5])
+  const [priceValues, setPriceValues] = useState([10, 100])
+  const [distanceValues, setDistanceValues] = useState([0, 25])
 
   multiSliderPriceValuesChange = (values) => {
     setPriceValues(values)
@@ -63,7 +63,7 @@ const FilterScreen = () => {
           sliderLength={300}
           onValuesChange={multiSliderPriceValuesChange}
           min={10}
-          max={100}
+          max={300}
           step={10}
           // enableLabel={true}
           style={{ stepLabel: { backgroundColor: 'transparent', color: 'transparent' } }}
@@ -72,7 +72,7 @@ const FilterScreen = () => {
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 10 }}>
           <Text>{priceValues[0]}K</Text>
           <Text>{priceValues[1]}K</Text>
-          <Text>100K</Text>
+          <Text>300K</Text>
         </View>
       </View>
 
@@ -84,7 +84,7 @@ const FilterScreen = () => {
           sliderLength={300}
           onValuesChange={multiSliderDistanceValuesChange}
           min={0}
-          max={10}
+          max={50}
           step={1}
           // enableLabel={true}
           style={{ stepLabel: { backgroundColor: 'transparent', color: 'transparent' } }}
@@ -93,7 +93,7 @@ const FilterScreen = () => {
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 10 }}>
           <Text>{distanceValues[0]}KM</Text>
           <Text>{distanceValues[1]}KM</Text>
-          <Text>10KM</Text>
+          <Text>50KM</Text>
         </View>
       </View>
 

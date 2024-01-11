@@ -41,7 +41,7 @@ const HomeScreen = ({ propertiesData }) => {
   const findDistance = (latitude, longitude) => {
     const toKilometers = (meters) => meters / 1000;
 
-    const distance = geolib.getDistance({latitude: location.coords.latitude, longitude: location.coords.longitude,}, {latitude, longitude});
+    const distance = geolib.getDistance({ latitude: location?.coords.latitude, longitude: location?.coords.longitude, }, { latitude, longitude });
     const distanceInKm = toKilometers(distance);
 
     return distanceInKm;
@@ -51,15 +51,33 @@ const HomeScreen = ({ propertiesData }) => {
 
   const [properties, setProperties] = useState(Object.values(propertiesData).filter((property) => property.propertyType === 'House'))
 
-  // useEffect(() => {
-  //   properties.filter((property) => {
-  //     property.houseType === filters.type &&
-  //       property.price >= 1000 * filters.price[0] && property.price <= 1000 * filters.price[1] &&
-  //       property.distance >= filters.distance[0] && property.distance <= filters.distance[1] &&
-  //       property.bedroomCount === filters.bedroom && property.washroomCount === filters.washroom
-  //   })
+  useEffect(() => {
+    if (
+      filters.type === null &&
+      filters.price === null &&
+      filters.distance === null &&
+      filters.bedroom === null &&
+      filters.washroom === null
+    ) {
+      // If all filters are null, return early
+      return;
+    }
 
-  // }, [filters]);
+    const newProperties = properties.filter((property) => {
+      return (
+        property.houseType === filters.type &&
+        property.price >= 1000 * filters.price[0] &&
+        property.price <= 1000 * filters.price[1] &&
+        findDistance(property.location.latitude, property.location.longitude) >= filters.distance[0] &&
+        findDistance(property.location.latitude, property.location.longitude) <= filters.distance[1] &&
+        property.bedroomCount === filters.bedroom &&
+        property.washroomCount === filters.washroom
+      );
+    });
+
+    setProperties(newProperties);
+  }, [filters]);
+
 
   const handleTypeButton = (type) => {
     if (type === "House") {
