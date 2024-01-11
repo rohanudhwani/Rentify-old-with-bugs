@@ -18,6 +18,8 @@ const HomeScreen = ({ propertiesData }) => {
   const dispatch = useDispatch();
   const filters = useSelector((state) => state.filters);
 
+  const [searchTerm, setSearchTerm] = useState("")
+
 
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
@@ -57,13 +59,17 @@ const HomeScreen = ({ propertiesData }) => {
       filters.price === null &&
       filters.distance === null &&
       filters.bedroom === null &&
-      filters.washroom === null
+      filters.washroom === null && searchTerm === ""
     ) {
       // If all filters are null, return early
       return;
     }
 
-    const newProperties = properties.filter((property) => {
+    const filteredBySearchTerm = properties.filter((property) => {
+      return property.name.toLowerCase().includes(searchTerm.toLowerCase())
+    });
+
+    const newProperties = filteredBySearchTerm.filter((property) => {
       return (
         property.houseType === filters.type &&
         property.price >= 1000 * filters.price[0] &&
@@ -76,7 +82,7 @@ const HomeScreen = ({ propertiesData }) => {
     });
 
     setProperties(newProperties);
-  }, [filters]);
+  }, [filters, searchTerm]);
 
 
   const handleTypeButton = (type) => {
@@ -110,7 +116,7 @@ const HomeScreen = ({ propertiesData }) => {
       </View>
 
       <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 20, marginLeft: 20, marginRight: 20, height: 50, borderColor: '#3834E7', borderWidth: 2, borderRadius: 10, paddingLeft: 20, fontFamily: 'Inter_400Regular', fontSize: 15, color: 'gray', position: 'relative', }}>
-        <TextInput placeholder="Search" style={{ flex: 1, height: '100%', }} />
+        <TextInput value={searchTerm} onChangeText={(text) => setSearchTerm(text)} placeholder="Search" style={{ flex: 1, height: '100%', }} />
         <Feather name="search" size={24} color="gray" style={{ position: 'absolute', right: 15, }} />
       </View>
 
