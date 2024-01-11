@@ -1,12 +1,12 @@
 import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { EvilIcons, Feather } from '@expo/vector-icons';
 import Slider from '../component/Slider';
 import Properties from '../component/Properties';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
-
+import * as Location from 'expo-location';
 
 
 const HomeScreen = ({ propertiesData }) => {
@@ -18,55 +18,63 @@ const HomeScreen = ({ propertiesData }) => {
   const dispatch = useDispatch();
   const filters = useSelector((state) => state.filters);
 
-  const propertyData = [
-    {
-      image: require('../assets/Screen1.jpeg'),
-      name: 'Beautiful House',
-      location: 'City Center',
-      priceRange: '5,00,000 - 6,00,000',
-    },
-    {
-      image: require('../assets/Screen2.jpg'),
-      name: 'Bell Cottage',
-      location: 'Lodha Paradise Thane',
-      priceRange: '5,00,000 - 6,00,000',
-    },
-    {
-      image: require('../assets/Screen3.jpg'),
-      name: 'Fairy View House',
-      location: 'Elecronic City Bangalore',
-      priceRange: '5,00,000 - 6,00,000',
-    },
-    {
-      image: require('../assets/Screen1.jpeg'),
-      name: 'Beautiful fdfdfeHouse',
-      location: 'City Center',
-      priceRange: '5,00,000 - 6,00,000',
-    },
-    {
-      image: require('../assets/Screen3.jpg'),
-      name: 'Fairy Viefddddw House',
-      location: 'Elecronic City Bangalore',
-      priceRange: '5,00,000 - 6,00,000',
-    },
-  ];
+
+  const [location, setLocation] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== 'granted') {
+        setErrorMsg('Permission to access location was denied');
+        return;
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      setLocation(location);
+    })();
+  }, []);
+
+  const geolib = require('geolib');
+
+  const findDistance = (latitude, longitude) => {
+    const toKilometers = (meters) => meters / 1000;
+
+    const distance = geolib.getDistance({latitude: location.coords.latitude, longitude: location.coords.longitude,}, {latitude, longitude});
+    const distanceInKm = toKilometers(distance);
+
+    return distanceInKm;
+  };
+
+
 
   const [properties, setProperties] = useState(Object.values(propertiesData).filter((property) => property.propertyType === 'House'))
 
+  // useEffect(() => {
+  //   properties.filter((property) => {
+  //     property.houseType === filters.type &&
+  //       property.price >= 1000 * filters.price[0] && property.price <= 1000 * filters.price[1] &&
+  //       property.distance >= filters.distance[0] && property.distance <= filters.distance[1] &&
+  //       property.bedroomCount === filters.bedroom && property.washroomCount === filters.washroom
+  //   })
+
+  // }, [filters]);
+
   const handleTypeButton = (type) => {
-    if(type === "House"){
+    if (type === "House") {
       setSelectedType("House")
       const data = Object.values(propertiesData).filter(
         (property) => property.propertyType === 'House'
       );
       setProperties(data)
-    } else if(type === "Villa"){
+    } else if (type === "Villa") {
       setSelectedType("Villa")
       const data = Object.values(propertiesData).filter(
         (property) => property.propertyType === 'Villa'
       );
       setProperties(data)
-    } else if(type === "Apartment"){
+    } else if (type === "Apartment") {
       setSelectedType("Apartment")
       const data = Object.values(propertiesData).filter(
         (property) => property.propertyType === 'Apartment'
@@ -74,7 +82,7 @@ const HomeScreen = ({ propertiesData }) => {
       setProperties(data)
     }
   }
-  
+
 
   return (
     <SafeAreaView style={{ backgroundColor: "#EEF3F6" }}>
@@ -106,7 +114,7 @@ const HomeScreen = ({ propertiesData }) => {
 
         <View style={{ flexDirection: "row", marginTop: 10, justifyContent: "space-between", marginRight: 20, alignItems: "baseline", marginBottom: 8 }}>
           <Text style={{ fontFamily: 'Inter_400Regular', fontSize: 18, fontWeight: "bold" }}>Properties for you</Text>
-          <Text onPress={() => console.log(filters)} style={{ fontFamily: 'Inter_400Regular', fontSize: 13, fontWeight: "bold", color: "#5552E9" }}>See all</Text>
+          <Text onPress={() => console.log(findDistance(28.704060, 77.102493))} style={{ fontFamily: 'Inter_400Regular', fontSize: 13, fontWeight: "bold", color: "#5552E9" }}>See all</Text>
         </View>
 
         {properties.map((property, index) => (
