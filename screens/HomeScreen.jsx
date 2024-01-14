@@ -141,6 +141,8 @@ const HomeScreen = ({ propertiesData }) => {
           <Text onPress={() => console.log(findDistance(28.704060, 77.102493))} style={{ fontFamily: 'Inter_400Regular', fontSize: 13, fontWeight: "bold", color: "#5552E9" }}>See all</Text>
         </View>
 
+        {/* Shows separate properties based on the type of property selected */}
+
         {properties.map((property, index) => (
           <Properties key={index} property={property} />
         ))}
