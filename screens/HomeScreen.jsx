@@ -53,13 +53,18 @@ const HomeScreen = ({ propertiesData }) => {
 
   const [properties, setProperties] = useState(Object.values(propertiesData).filter((property) => property.propertyType === 'House'))
 
+  const [filtersApplied, setFiltersApplied] = useState(false)
+
   useEffect(() => {
-    if (
-      filters.type === null &&
+
+    if(filters.type === null &&
       filters.price === null &&
       filters.distance === null &&
       filters.bedroom === null &&
-      filters.washroom === null && searchTerm === ""
+      filters.washroom === null) {setFiltersApplied(false)} else {setFiltersApplied(true)}
+
+    if (
+      filtersApplied===false && searchTerm === ""
     ) {
       // If all filters are null, return early
       return;
@@ -70,15 +75,18 @@ const HomeScreen = ({ propertiesData }) => {
     });
 
     const newProperties = filteredBySearchTerm.filter((property) => {
-      return (
-        property.houseType === filters.type &&
-        property.price >= 1000 * filters.price[0] &&
-        property.price <= 1000 * filters.price[1] &&
-        findDistance(property.location.latitude, property.location.longitude) >= filters.distance[0] &&
-        findDistance(property.location.latitude, property.location.longitude) <= filters.distance[1] &&
-        property.bedroomCount === filters.bedroom &&
-        property.washroomCount === filters.washroom
-      );
+      if(filtersApplied===false) {return property}
+      else {
+        return (
+          property.houseType === filters.type &&
+          property.price >= 1000 * filters.price[0] &&
+          property.price <= 1000 * filters.price[1] &&
+          findDistance(property.location.latitude, property.location.longitude) >= filters.distance[0] &&
+          findDistance(property.location.latitude, property.location.longitude) <= filters.distance[1] &&
+          property.bedroomCount === filters.bedroom &&
+          property.washroomCount === filters.washroom
+        );
+      }
     });
 
     setProperties(newProperties);
