@@ -23,7 +23,7 @@ const LoginScreen = () => {
         <Text style={{fontFamily: 'Inter_400Regular', fontSize:25, color:"#5A7587", fontWeight:"bold"}}>RENTIFY</Text>
       </View>
 
-      <View style={{marginTop:90, marginLeft:20}}>
+      <View style={{marginTop:60, marginLeft:20}}>
         <Text style={{fontFamily: 'Inter_400Regular', fontSize:25, fontWeight:"bold"}}>Login to your Account</Text>
         <Text style={{marginTop:10, fontFamily: 'Inter_400Regular', fontSize:15, color:"gray"}}>Please login to access your account</Text>
       </View>
