@@ -1,7 +1,7 @@
 import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { EvilIcons, Feather } from '@expo/vector-icons';
+import { EvilIcons, Feather, Entypo } from '@expo/vector-icons';
 import Slider from '../component/Slider';
 import Properties from '../component/Properties';
 import { useNavigation } from '@react-navigation/native';
@@ -23,6 +23,7 @@ const HomeScreen = ({ propertiesData }) => {
 
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
+  const [areaName, setAreaName] = useState("Area")
 
   useEffect(() => {
     (async () => {
@@ -34,7 +35,22 @@ const HomeScreen = ({ propertiesData }) => {
       }
 
       let location = await Location.getCurrentPositionAsync({});
+      // console.log(location);
       setLocation(location);
+
+      try {
+        const response = await fetch(
+          `https://nominatim.openstreetmap.org/reverse?format=json&lat=${location?.coords.latitude}&lon=${location?.coords.longitude}&addressdetails=1`
+        );
+        const data = await response.json();
+
+        if (data && data.address) {
+          // Extract the area name from the response
+          setAreaName(data.address.county || data.address.state_district)
+        }
+      } catch (error) {
+        console.error('Error fetching or parsing data:', error);
+      }
     })();
   }, []);
 
@@ -57,14 +73,14 @@ const HomeScreen = ({ propertiesData }) => {
 
   useEffect(() => {
 
-    if(filters.type === null &&
+    if (filters.type === null &&
       filters.price === null &&
       filters.distance === null &&
       filters.bedroom === null &&
-      filters.washroom === null) {setFiltersApplied(false)} else {setFiltersApplied(true)}
+      filters.washroom === null) { setFiltersApplied(false) } else { setFiltersApplied(true) }
 
     if (
-      filtersApplied===false && searchTerm === ""
+      filtersApplied === false && searchTerm === ""
     ) {
       // If all filters are null, return early
       return;
@@ -75,7 +91,7 @@ const HomeScreen = ({ propertiesData }) => {
     });
 
     const newProperties = filteredBySearchTerm.filter((property) => {
-      if(filtersApplied===false) {return property}
+      if (filtersApplied === false) { return property }
       else {
         return (
           property.houseType === filters.type &&
@@ -119,8 +135,14 @@ const HomeScreen = ({ propertiesData }) => {
   return (
     <SafeAreaView style={{ backgroundColor: "#EEF3F6" }}>
       <View style={{ marginTop: 5, flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginLeft: 20, marginRight: 30 }}>
-        <Text style={{ fontFamily: 'Inter_400Regular', fontSize: 20, fontWeight: "800" }}>Hi Rohan !</Text>
-        <EvilIcons name="bell" size={30} color="black" />
+        <View>
+          <Text style={{ fontFamily: 'Inter_400Regular', fontSize: 20, fontWeight: "800" }}>Hi Rohan !</Text>
+          <View style={{flexDirection:"row", gap:2}}>
+            <EvilIcons name="location" size={20} color="black" />
+            <Text>{areaName}</Text>
+          </View>
+        </View>
+        <EvilIcons name="bell" size={32} color="black" />
       </View>
 
       <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 20, marginLeft: 20, marginRight: 20, height: 50, borderColor: '#3834E7', borderWidth: 2, borderRadius: 10, paddingLeft: 20, fontFamily: 'Inter_400Regular', fontSize: 15, color: 'gray', position: 'relative', }}>
