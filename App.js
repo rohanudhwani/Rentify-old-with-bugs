@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import { DetailScreen, FilterScreen, HomeScreen, LocationScreen, LoginScreen, OnBoardingScreen, SignUpScreen, ViewScreen } from './screens';
+import { DetailScreen, FilterScreen, HomeScreen, LocationScreen, LoginScreen, OnBoardingScreen, SignUpScreen, UserScreen, ViewScreen, WishlistScreen } from './screens';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useFonts, Inter_400Regular, Inter_500Medium, Inter_700Bold } from '@expo-google-fonts/inter';
@@ -73,8 +73,9 @@ export default function App() {
           <Stack.Screen name="Detail" component={DetailScreen} />
           <Stack.Screen name="Location" component={LocationScreen} />
           <Stack.Screen name="View" component={ViewScreen} />
+          <Stack.Screen name="Wishlist" component={WishlistScreen} />
+          <Stack.Screen name="User" component={UserScreen} />
         </Stack.Navigator>
-
 
 
         {activeScreen !== "SignUp" && activeScreen !== "Login" && activeScreen !== "OnBoarding" && activeScreen !== "Filter" && activeScreen !== "Detail" && activeScreen !== "Location" && activeScreen !== "View" && (

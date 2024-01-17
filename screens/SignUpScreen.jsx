@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { Alert } from 'react-native'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { auth, db } from '../firebase'
+import { auth, db, fireDb } from '../firebase'
 import { doc, setDoc } from 'firebase/firestore'
 
 
@@ -46,9 +46,11 @@ const LoginScreen = () => {
     createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
       const user = userCredential._tokenResponse.email;
       const myUserUid = auth.currentUser.uid;
-      setDoc(doc(db, "users", `${myUserUid}`), {
+      setDoc(doc(fireDb, "users", `${myUserUid}`), {
         email: user
       })
+      setEmail("")
+      setPassword("")
     }).catch((error) => {
       Alert.alert(
         "Sign Up Unsuccessful",
@@ -77,8 +79,9 @@ const LoginScreen = () => {
       <TextInput value={email} onChangeText={(text) => setEmail(text)} style={{ marginTop: 70, marginLeft: 20, marginRight: 20, height: 50, borderColor: '#3834E7', borderWidth: 2, borderRadius: 10, paddingLeft: 20, fontFamily: 'Inter_400Regular', fontSize: 15, color: "gray" }} placeholder="Email Address" />
       <TextInput value={password} onChangeText={(text) => setPassword(text)} secureTextEntry={true} style={{ marginTop: 40, marginLeft: 20, marginRight: 20, height: 50, borderColor: '#3834E7', borderWidth: 2, borderRadius: 10, paddingLeft: 20, fontFamily: 'Inter_400Regular', fontSize: 15, color: "gray" }} placeholder="Enter Password" />
 
-      <View style={{ marginTop: 20, alignItems: "flex-end" }}>
-        <Text style={{ marginRight: 20, fontFamily: 'Inter_400Regular', fontSize: 13, color: "gray" }}>Forgot Password?</Text>
+      <View style={{ marginTop: 20, justifyContent: "space-between", flexDirection: "row", marginRight: 20, marginLeft: 20 }}>
+        <Text onPress={() => navigation.navigate("Login")} style={{ fontFamily: 'Inter_400Regular', fontSize: 13, color: "gray" }}>Already have an account?</Text>
+        <Text style={{ fontFamily: 'Inter_400Regular', fontSize: 13, color: "gray" }}>Forgot Password?</Text>
       </View>
 
       <TouchableOpacity onPress={register} style={{ marginTop: 30, marginLeft: 20, marginRight: 20, height: 50, backgroundColor: "#3834E7", borderRadius: 10, justifyContent: "center", alignItems: "center" }}>

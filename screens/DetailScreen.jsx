@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Entypo, EvilIcons, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import { auth, fireDb } from '../firebase';
+import { arrayUnion, getDoc, setDoc, updateDoc, doc } from 'firebase/firestore';
 
 const DetailScreen = ({ route }) => {
 
@@ -56,6 +58,33 @@ const DetailScreen = ({ route }) => {
             console.log("Contact number is not available for messaging");
         }
     };
+
+    const handleRent = async () => {
+        // Create a reference to the user document
+        const userDocRef = doc(fireDb, 'users', auth.currentUser.uid);
+
+        // Check if the "wishlist" field exists
+        const userDocSnapshot = await getDoc(userDocRef);
+        const wishlistExists = userDocSnapshot.exists() && userDocSnapshot.data().wishlist;
+        const currentData = userDocSnapshot.data();
+        // Update the document
+        if (wishlistExists) {
+            
+            // If "wishlist" exists, use arrayUnion to add the property to the array
+            await updateDoc(userDocRef, {
+                ...currentData,
+                wishlist: arrayUnion(property)
+            });
+        } else {
+            // If "wishlist" doesn't exist, initialize it with an array containing the property
+            await setDoc(userDocRef, {
+                ...currentData,
+                wishlist: [property]
+            });
+        }
+
+        navigation.navigate("Wishlist")
+    }
 
     return (
         <ScrollView showsVerticalScrollIndicator={false}>
@@ -132,7 +161,7 @@ const DetailScreen = ({ route }) => {
                     </View>
                 </View>
 
-                <TouchableOpacity onPress={() => navigation.goBack()} style={{ marginTop: 30, width: '100%', height: 50, backgroundColor: "#3834E7", borderRadius: 10, justifyContent: "center", alignItems: "center", marginBottom: 20 }}>
+                <TouchableOpacity onPress={handleRent} style={{ marginTop: 30, width: '100%', height: 50, backgroundColor: "#3834E7", borderRadius: 10, justifyContent: "center", alignItems: "center", marginBottom: 20 }}>
                     <Text style={{ fontFamily: 'Inter_400Regular', fontSize: 17, color: "white", fontWeight: "bold" }}>Rent Now</Text>
                 </TouchableOpacity>
             </View>
