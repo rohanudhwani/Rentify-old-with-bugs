@@ -58,7 +58,7 @@ const OnBoardingScreen = () => {
         const value = await AsyncStorage.getItem('@onBoarding_Complete')
         console.log('value', value)
         if(value !== null && value ==="true") {
-          navigation.replace("Home");
+          navigation.replace("Login");
         }
       } catch(e) {
         console.log('error', e)
@@ -73,7 +73,7 @@ const OnBoardingScreen = () => {
     if( e === 2 ){
       try{
         await AsyncStorage.setItem('@onBoarding_Complete', 'true');
-        navigation.navigate("Home");
+        navigation.navigate("SignUp");
       } catch (e){
         console.log('error', e)
       }

@@ -1,7 +1,7 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 
-import { FontAwesome, MaterialIcons, AntDesign, Feather, Ionicons, FontAwesome5 } from '@expo/vector-icons'
+import { FontAwesome, AntDesign, Feather, Ionicons } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 
 
@@ -27,7 +27,7 @@ const BottomTab = ({ activeScreen }) => {
           )}
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate("Filter")}>
-        {activeScreen === "Wishlist" ? (
+        {activeScreen === "Filter" ? (
             <FontAwesome name="filter" size={28} color="white" />
           ) : (
             <AntDesign name="filter" size={28} color="white" />
@@ -36,9 +36,9 @@ const BottomTab = ({ activeScreen }) => {
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate("User")}>
           {activeScreen === "User" ? (
-            <FontAwesome5 name="user-alt" size={25} color="white" />
+            <FontAwesome name="user" size={28} color="white" />
           ) : (
-            <FontAwesome5 name="user" size={25} color="white" />
+            <Feather name="user" size={28} color="white" />
           )}
 
         </TouchableOpacity>

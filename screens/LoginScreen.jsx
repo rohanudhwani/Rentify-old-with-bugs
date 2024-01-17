@@ -22,7 +22,7 @@ const LoginScreen = () => {
         setLoading(false)
       }
       if (user) {
-        navigation.replace("OnBoarding")
+        navigation.replace("Home")
       }
     })
     return unsubscribe

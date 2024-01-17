@@ -26,33 +26,44 @@ const HomeScreen = ({ propertiesData }) => {
   const [areaName, setAreaName] = useState("Area")
 
   useEffect(() => {
-    (async () => {
-
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== 'granted') {
-        setErrorMsg('Permission to access location was denied');
-        return;
-      }
-
-      let location = await Location.getCurrentPositionAsync({});
-      // console.log(location);
-      setLocation(location);
-
+    const fetchLocation = async () => {
       try {
-        const response = await fetch(
-          `https://nominatim.openstreetmap.org/reverse?format=json&lat=${location?.coords.latitude}&lon=${location?.coords.longitude}&addressdetails=1`
-        );
-        const data = await response.json();
+        let { status } = await Location.requestForegroundPermissionsAsync();
 
-        if (data && data.address) {
-          // Extract the area name from the response
-          setAreaName(data.address.county || data.address.state_district)
+        if (status !== 'granted') {
+          console.log('Permission to access location was denied');
+          return;
+        }
+
+        let location = await Location.getCurrentPositionAsync({});
+        // console.log(location);
+
+        // Check if location is available
+        if (location && location.coords) {
+          try {
+            const response = await fetch(
+              `https://nominatim.openstreetmap.org/reverse?format=json&lat=${location.coords.latitude}&lon=${location.coords.longitude}&addressdetails=1`
+            );
+            const data = await response.json();
+            
+            if (data && data.address) {
+              // Extract the area name from the response
+              setAreaName(data.address.county || data.address.state_district);
+            }
+          } catch (error) {
+            console.log('Error fetching or parsing data:', error);
+          }
+        } else {
+          console.log('Location not available');
         }
       } catch (error) {
-        console.error('Error fetching or parsing data:', error);
+        console.log('Error fetching location:', error);
       }
-    })();
-  }, []);
+    };
+
+    fetchLocation();
+  }, [location]);
+
 
   const geolib = require('geolib');
 
@@ -137,7 +148,7 @@ const HomeScreen = ({ propertiesData }) => {
       <View style={{ marginTop: 5, flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginLeft: 20, marginRight: 30 }}>
         <View>
           <Text style={{ fontFamily: 'Inter_400Regular', fontSize: 20, fontWeight: "800" }}>Hi Rohan !</Text>
-          <View style={{flexDirection:"row", gap:2}}>
+          <View style={{ flexDirection: "row", gap: 2 }}>
             <EvilIcons name="location" size={20} color="black" />
             <Text>{areaName}</Text>
           </View>

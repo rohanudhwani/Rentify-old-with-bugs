@@ -63,9 +63,9 @@ export default function App() {
       <NavigationContainer>
         <MyComponent setActiveScreen={setActiveScreen} />
         <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="OnBoarding" component={OnBoardingScreen} />
           <Stack.Screen name="SignUp" component={SignUpScreen} />
           <Stack.Screen name="Login" component={LoginScreen} />
-          <Stack.Screen name="OnBoarding" component={OnBoardingScreen} />
           <Stack.Screen name="Home">
             {(props) => <HomeScreen {...props} propertiesData={propertiesData} />}
           </Stack.Screen>
